@@ -5,8 +5,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
-    {
+    
 
     // horizontal rotation speed
     public float horizontalSpeed = 1f;
@@ -25,7 +24,6 @@ public class Character : MonoBehaviour
     {
         cam = Camera.main;
         characterController = GetComponent<CharacterController>();
->>>>>>> parent of e1b244e (Merge branch 'master' of https://github.com/JSWulf/ProjectFlyingFeathers)
     }
 
     // Update is called once per frame
