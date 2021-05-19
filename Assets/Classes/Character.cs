@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-<<<<<<< HEAD
     // Start is called before the first frame update
     void Start()
     {
-        
-=======
 
     // horizontal rotation speed
     public float horizontalSpeed = 1f;
@@ -34,12 +31,6 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        
-=======
-=======
->>>>>>> parent of e1b244e (Merge branch 'master' of https://github.com/JSWulf/ProjectFlyingFeathers)
         float mouseX = Input.GetAxis("Mouse X") * horizontalSpeed;
         float mouseY = Input.GetAxis("Mouse Y") * verticalSpeed;
 
@@ -64,9 +55,5 @@ public class Character : MonoBehaviour
             velocity -= Gravity * Time.deltaTime;
             characterController.Move(new Vector3(0, velocity, 0));
         }
-<<<<<<< HEAD
->>>>>>> parent of e1b244e (Merge branch 'master' of https://github.com/JSWulf/ProjectFlyingFeathers)
-=======
->>>>>>> parent of e1b244e (Merge branch 'master' of https://github.com/JSWulf/ProjectFlyingFeathers)
     }
 }
