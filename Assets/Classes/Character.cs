@@ -4,35 +4,19 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    // Start is called before the first frame update
-
-
-    // horizontal rotation speed
-    //public float horizontalSpeed = .5f;
-    //// vertical rotation speed
-    //public float verticalSpeed = .5f;
     private float xRotation;
     private float yRotation;
-    //private Camera cam;
-    //CharacterController characterController;
-    ////public float MovementSpeed = 0.2f;
-    //public float Gravity = 9.8f;
-    //private float velocity = 0;
-    //Vector3 MoveDirection;
-    public float MoveSpeed = 13;
-    Rigidbody rb;
-
-    //private void Awake()
-    //{
-    //    rb = GetComponent<Rigidbody>();
-    //    cam = Camera.main;
-    //}
+    public float MoveSpeed = 5;
+    public float JumpVelocity = 5;
+    private Camera Cam;
+    private Rigidbody RB;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        //cam = Camera.main;
-        //characterController = GetComponent<CharacterController>();
+        Cam = Camera.main;
+        RB = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -43,56 +27,51 @@ public class Character : MonoBehaviour
 
         yRotation += mouseY;
         xRotation += mouseX;
-        xRotation = Mathf.Clamp(xRotation, -90, 90);
+        yRotation = Mathf.Clamp(yRotation, -45, 45); //max turn speed
+        xRotation = Mathf.Clamp(xRotation, -90, 90); //max turn speed
 
-
-        //cam.transform.localEulerAngles = new Vector3(-xRotation, yRotation, 0.0f) * Time.deltaTime;
         gameObject.transform.Rotate(new Vector3(0f, xRotation, 0.0f) * Time.deltaTime);
-        //rb.MoveRotation(new Quaternion())
+
+        var yRPos = Cam.transform.rotation.eulerAngles.x;
+
+        if (yRPos < 280 && yRPos >= 200 && yRotation > 0)
+        {
+            // do nothing
+            print("upper clamp");
+        }
+        else
+        {
+            if (yRPos >= 60 && yRPos < 200 && -yRotation > 0)
+            {
+                //do nothing?
+                print("lower clamp");
+            }
+            else
+            {
+                Cam.transform.Rotate(new Vector3(-yRotation, 0, 0) * Time.deltaTime);
+            }
+        }
         
-
-
         // player movement - forward, backward, left, right
-        float Right = Input.GetAxis("MoveRight") * MoveSpeed/1000;
+        float Right = Input.GetAxis("MoveRight");// * MoveSpeed/1000;
 
-        float Forward = Input.GetAxis("MoveForward")* MoveSpeed/1000;
+        float Forward = Input.GetAxis("MoveForward");// * MoveSpeed/1000;
 
-        //MoveDirection = (Right * transform.right + Forward * transform.forward).normalized;
-
-        ////characterController.Move((Vector3.right * horizontal + Vector3.forward * vertical) * Time.deltaTime);
-
-
-        gameObject.transform.Translate((Vector3.right * Right + Vector3.forward * Forward));
-
-
-        ////gameObject.transform.Translate(Vector3.right * horizontal + Vector3.forward * vertical);
-        //print(characterController.isGrounded);
-        //// Gravity
-        //if (characterController.isGrounded)
-        //{
-        //    //velocity = 0;
-        //    characterController.transform.Translate(new Vector3(0, 0, 0));
-        //}
-        //else
-        //{
-        //    velocity = -Gravity * Time.deltaTime;
-        //    //characterController.Move(new Vector3(0, velocity, 0));
-        //    characterController.transform.Translate(new Vector3(0, -1, 0) * Time.deltaTime);
-
-        //}
+        //jump handler
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            RB.velocity = new Vector3(0, JumpVelocity, 0);
+        }
         
+        gameObject.transform.Translate((Vector3.right * (Right * MoveSpeed) + Vector3.forward * (Forward * MoveSpeed)) * Time.deltaTime);
+
+        //debug:
+        //print("MouseX: " + mouseX);
+        //print("MouseY: " + yRotation);
+        //print("Forward: " + Forward);
+        //print("Right: " + Right);
+        //print(yRPos);
+
+
     }
-
-
-    //private void FixedUpdate()
-    //{
-    //    Move();
-    //}
-
-    //private void Move()
-    //{
-    //    Vector3 vector = new Vector3(0, -1, 0);
-    //    //rb.MovePosition((MoveDirection * MoveSpeed * Time.deltaTime));
-    //    //rb.MovePosition += vector;
-    //}
 }
