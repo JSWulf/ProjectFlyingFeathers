@@ -4,62 +4,74 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-
-    // horizontal rotation speed
-    public float horizontalSpeed = 1f;
-    // vertical rotation speed
-    public float verticalSpeed = 1f;
-    private float xRotation = 0.0f;
-    private float yRotation = 0.0f;
-    private Camera cam;
-    //private Object Char;
-
-
-    CharacterController characterController;
-    public float MovementSpeed = 12;
-    public float Gravity = 1f;
-    private float velocity = 0;
+    private float xRotation;
+    private float yRotation;
+    public float MoveSpeed = 5;
+    public float JumpVelocity = 5;
+    private Camera Cam;
+    private Rigidbody RB;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        cam = Camera.main;
-        //Char = this.gameObject;
-        characterController = GetComponent<CharacterController>();
+        Cam = Camera.main;
+        RB = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        print(Input.GetAxis("Horizontal"));
-        print(Input.GetAxis("Vertical"));
-        float mouseX = Input.GetAxis("Mouse X") * horizontalSpeed;
-        float mouseY = Input.GetAxis("Mouse Y") * verticalSpeed;
+        float mouseX = Input.GetAxis("Pitch");
+        float mouseY = Input.GetAxis("Yaw");
 
-        yRotation += mouseX;
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90, 90);
+        yRotation += mouseY;
+        xRotation += mouseX;
+        yRotation = Mathf.Clamp(yRotation, -45, 45); //max turn speed
+        xRotation = Mathf.Clamp(xRotation, -90, 90); //max turn speed
 
-        gameObject.transform.eulerAngles = new Vector3(xRotation, yRotation, 0.0f);
-        
+        gameObject.transform.Rotate(new Vector3(0f, xRotation, 0.0f) * Time.deltaTime);
 
-        // player movement - forward, backward, left, right
-        float horizontal = Input.GetAxis("Horizontal") * MovementSpeed;
-        float vertical = Input.GetAxis("Vertical") * MovementSpeed;
-        characterController.Move((Vector3.right * horizontal + Vector3.forward * vertical) * Time.deltaTime);
+        var yRPos = Cam.transform.rotation.eulerAngles.x;
 
-        // Gravity
-        if (characterController.isGrounded)
+        if (yRPos < 280 && yRPos >= 200 && yRotation > 0)
         {
-            velocity = 0;
+            // do nothing
+            print("upper clamp");
         }
         else
         {
-            velocity -= Gravity * MovementSpeed * Time.deltaTime;
-            characterController.Move(new Vector3(0, velocity, 0));
+            if (yRPos >= 60 && yRPos < 200 && -yRotation > 0)
+            {
+                //do nothing?
+                print("lower clamp");
+            }
+            else
+            {
+                Cam.transform.Rotate(new Vector3(-yRotation, 0, 0) * Time.deltaTime);
+            }
         }
-
         
+        // player movement - forward, backward, left, right
+        float Right = Input.GetAxis("MoveRight");// * MoveSpeed/1000;
+
+        float Forward = Input.GetAxis("MoveForward");// * MoveSpeed/1000;
+
+        //jump handler
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            RB.velocity = new Vector3(0, JumpVelocity, 0);
+        }
+        
+        gameObject.transform.Translate((Vector3.right * (Right * MoveSpeed) + Vector3.forward * (Forward * MoveSpeed)) * Time.deltaTime);
+
+        //debug:
+        //print("MouseX: " + mouseX);
+        //print("MouseY: " + yRotation);
+        //print("Forward: " + Forward);
+        //print("Right: " + Right);
+        //print(yRPos);
+
+
     }
 }
-
