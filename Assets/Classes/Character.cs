@@ -10,7 +10,15 @@ public class Character : MonoBehaviour
     private Camera Cam { get; set; }
     private Rigidbody RB { get; set; }
 
+    public float currentStamina = 100;
+    public float currentStrength = 0;
 
+    public bool reverse = false;
+
+    public float staminaRegenRate = 0.012f;
+    public float pullStrength = 0.4f;
+
+    public int reverseCount = 0;
 
     //public properites
 
@@ -23,6 +31,8 @@ public class Character : MonoBehaviour
     public int MouseButtonFire = 0;
     public int MouseButtonTurn = 1;
 
+    public StrengthBar strengthBar;
+    public StaminaBar staminaBar;
 
     public float MoveSpeed = 5;
     public float JumpVelocity = 5;
@@ -32,8 +42,8 @@ public class Character : MonoBehaviour
 
     public string SelectedBow; //change type to bow once created.
     public List<string> Bows; //change type to bow once created.
-    public int Strength;
-    public int Stamina;
+    public int Strength = 100;
+    public int Stamina = 100;
 
     public List<string> Gear { get; set; } // future placeholder. Change type to "GearItem" once created.
 
@@ -42,6 +52,7 @@ public class Character : MonoBehaviour
     {
         Cam = Camera.main;
         RB = GetComponent<Rigidbody>();
+        strengthBar.SetMaxStrength(Strength);
     }
 
     // Update is called once per frame
@@ -69,16 +80,29 @@ public class Character : MonoBehaviour
             Turn(Input.GetAxis("Pitch"), Input.GetAxis("Yaw"));
         }
 
+        //Initial pull of bow by pushing "space"
+        if (Input.GetMouseButtonDown(MouseButtonFire))
+        {
+            //Reset strength bar
+            reverse = false;
+            currentStrength = 0.0f;
+            strengthBar.SetMaxStrength(Strength);
+            pullStrength = 0.2f;
+        }
+
         if (Input.GetMouseButton(MouseButtonFire))
         {
             //SelectedBow.Draw()
+            //While holding "space" strength bar moves while stamina depletes
+            Pull(pullStrength);
+            Fatigue(0.02f); //TODO! Keep as flat rate?
         }
         if (Input.GetMouseButtonUp(MouseButtonFire))
         {
             //Fire()
         }
 
-        if (Input.GetMouseButtonUp(1) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A))
+        if (Input.GetMouseButtonUp(MouseButtonTurn) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A))
         {
             xRotation = 0;
             yRotation = 0;
@@ -94,6 +118,7 @@ public class Character : MonoBehaviour
         //move
         Move(Input.GetAxis("MoveForward"), Input.GetAxis("MoveRight"));
 
+        UpdateStamina();
         //debug:
         //print("MouseX: " + mouseX);
         //print("MouseY: " + mouseY);
@@ -159,5 +184,98 @@ public class Character : MonoBehaviour
             RB.velocity = new Vector3(0, JumpVelocity, 0);
         }
         
+    }
+
+    void UpdateStamina()
+    {
+        //When stamina reaches 0, slow down regen rate
+        if (currentStamina <= 0)
+        {
+            staminaRegenRate = 0.007f;
+        }
+        else if (currentStamina >= 25 && currentStamina < 60)
+        { //Once stamina reaches 25 again, increase regen rate
+            staminaRegenRate = 0.01f;
+        }
+        else if (currentStamina >= 60)
+        { //Once stamina reaches 60 again, increase regen rate
+            staminaRegenRate = 0.012f;
+        }
+
+        //Continually recharge stamina guage
+        if (currentStamina < 100)
+        {
+            currentStamina += staminaRegenRate;
+            staminaBar.SetStamina(currentStamina);
+        }
+    }
+
+    //Method for draining stamina guage
+    void Fatigue(float staminaLoss)
+    {
+        currentStamina -= staminaLoss;
+        //Don't allow stamina to go below -10
+        if (currentStamina < -10)
+        {
+            currentStamina = -10;
+        }
+        staminaBar.SetStamina(currentStamina);
+    }
+
+    //Method for determining current strength
+    void Pull(float strength)
+    {
+        //Based on current strength, decrease pull strength rate
+        switch (currentStrength)
+        {
+            case 50:
+                pullStrength *= 0.5f;
+                break;
+            case 75:
+                pullStrength *= 0.85f;
+                break;
+        }
+
+        //In reverse, lower strength.  This happens after strength reaches 100 for the first time.
+        if (reverse)
+        {
+            currentStrength -= strength;
+            switch (reverseCount)
+            {
+                case 0:  //On the first reverse, do not go lower than 50 strength
+                    if (currentStrength < 50)
+                    {
+                        reverseCount++;
+                        reverse = false;
+                    }
+                    break;
+                case 1:  //On the second reverse, do not go lower than 60 strength
+                    if (currentStrength < 60)
+                    {
+                        reverseCount++;
+                        reverse = false;
+                    }
+                    break;
+                case 2:  //On the third or more reversals, do not go lower than 65 strength
+                    if (currentStrength < 65)
+                    {
+                        reverse = false;
+                    }
+                    break;
+            }
+        }
+        else
+        { //Increase strength
+            currentStrength += strength;
+            if (currentStrength >= 100)
+            {
+                reverse = true;
+            }
+        }
+        if (currentStamina <= 0.0f)
+        {
+            currentStrength = 0.0f;
+        }
+        strengthBar.SetStrength(currentStrength);
     }
 }
