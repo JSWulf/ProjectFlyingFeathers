@@ -4,13 +4,38 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    private float xRotation;
-    private float yRotation;
-    public float MoveSpeed = 5;
-    public float JumpVelocity = 5;
-    private Camera Cam;
-    private Rigidbody RB;
-    
+    //private properties
+    private float xRotation { get; set; }
+    private float yRotation { get; set; }
+    private Camera Cam { get; set; }
+    private Rigidbody RB { get; set; }
+
+
+
+    //public properites
+
+
+    public KeyCode TurnLeft { get; set; } = KeyCode.A;
+    public KeyCode TurnRight { get; set; } = KeyCode.D;
+
+    public KeyCode PlayerJump { get; set; } = KeyCode.Space;
+
+    public int MouseButtonFire { get; set; } = 0;
+    public int MouseButtonTurn { get; set; } = 1;
+
+
+    public float MoveSpeed { get; set; } = 5;
+    public float JumpVelocity { get; set; } = 5;
+
+    public string SelectedArrow { get; set; } //change type to bow once created.
+    public List<string> Arrows { get; set; } //change type to bow once created.
+
+    public string SelectedBow { get; set; } //change type to bow once created.
+    public List<string> Bows { get; set; } //change type to bow once created.
+    public int Strength { get; set; }
+    public int Stamina { get; private set; }
+
+    public List<string> Gear { get; set; } // future placeholder. Change type to "GearItem" once created.
 
     // Start is called before the first frame update
     void Start()
@@ -22,11 +47,77 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float mouseX = Input.GetAxis("Pitch");
-        float mouseY = Input.GetAxis("Yaw");
+        //float mouseX = Input.GetAxis("Pitch");
+        //float mouseY = Input.GetAxis("Yaw");
 
-        yRotation += mouseY;
-        xRotation += mouseX;
+        //float Forward = Input.GetAxis("MoveForward");
+        //float Right = Input.GetAxis("MoveRight");
+
+
+        //turn if right-click, A, or D is held
+        if (Input.GetKey(TurnLeft))
+        {
+            Turn(-45, Input.GetAxis("Yaw"));
+        }
+        else if (Input.GetKey(TurnRight))
+        {
+            Turn(45, Input.GetAxis("Yaw"));
+        }
+        else if (Input.GetMouseButton(MouseButtonTurn))
+        {
+            // Turn(mouseX, mouseY);
+            Turn(Input.GetAxis("Pitch"), Input.GetAxis("Yaw"));
+        }
+
+        if (Input.GetMouseButton(MouseButtonFire))
+        {
+            //SelectedBow.Draw()
+        }
+        if (Input.GetMouseButtonUp(MouseButtonFire))
+        {
+            //Fire()
+        }
+
+        if (Input.GetMouseButtonUp(1) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A))
+        {
+            xRotation = 0;
+            yRotation = 0;
+        }
+
+        //jump handler
+        if (Input.GetKeyDown(PlayerJump))
+        {
+            //RB.velocity = new Vector3(0, JumpVelocity, 0);
+            Jump();
+        }
+
+        //move
+        Move(Input.GetAxis("MoveForward"), Input.GetAxis("MoveRight"));
+
+        //debug:
+        //print("MouseX: " + mouseX);
+        //print("MouseY: " + mouseY);
+        //print("Forward: " + Forward);
+        //print("Right: " + Right);
+        //print(yRPos);
+    }
+
+    /// <summary>
+    /// Fire the bow - either when fire button released or stamina runs out.
+    /// </summary>
+    public void Fire()
+    {
+        //check stamina against strength for fire's % rating
+
+        //selectedBow.fire(float %)
+        
+    }
+
+    public void Turn(float x, float y)
+    {
+        yRotation += y;
+        xRotation += x;
+        
         yRotation = Mathf.Clamp(yRotation, -45, 45); //max turn speed
         xRotation = Mathf.Clamp(xRotation, -90, 90); //max turn speed
 
@@ -51,27 +142,22 @@ public class Character : MonoBehaviour
                 Cam.transform.Rotate(new Vector3(-yRotation, 0, 0) * Time.deltaTime);
             }
         }
-        
-        // player movement - forward, backward, left, right
-        float Right = Input.GetAxis("MoveRight");// * MoveSpeed/1000;
+    }
 
-        float Forward = Input.GetAxis("MoveForward");// * MoveSpeed/1000;
+    public void Move(float f, float r)
+    {
+        gameObject.transform.Translate(
+            (Vector3.right * (r * MoveSpeed) 
+            + Vector3.forward * (f * MoveSpeed)
+            ) * Time.deltaTime);
+    }
 
-        //jump handler
-        if (Input.GetKeyDown(KeyCode.Space))
+    public void Jump()
+    {
+        if (RB.velocity.y < 0.1 && RB.velocity.y > -0.1)
         {
             RB.velocity = new Vector3(0, JumpVelocity, 0);
         }
         
-        gameObject.transform.Translate((Vector3.right * (Right * MoveSpeed) + Vector3.forward * (Forward * MoveSpeed)) * Time.deltaTime);
-
-        //debug:
-        //print("MouseX: " + mouseX);
-        //print("MouseY: " + yRotation);
-        //print("Forward: " + Forward);
-        //print("Right: " + Right);
-        //print(yRPos);
-
-
     }
 }
