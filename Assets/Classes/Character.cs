@@ -15,25 +15,25 @@ public class Character : MonoBehaviour
     //public properites
 
 
-    public KeyCode TurnLeft { get; set; } = KeyCode.A;
-    public KeyCode TurnRight { get; set; } = KeyCode.D;
+    public KeyCode TurnLeft = KeyCode.A;
+    public KeyCode TurnRight = KeyCode.D;
 
-    public KeyCode PlayerJump { get; set; } = KeyCode.Space;
+    public KeyCode PlayerJump = KeyCode.Space;
 
-    public int MouseButtonFire { get; set; } = 0;
-    public int MouseButtonTurn { get; set; } = 1;
+    public int MouseButtonFire = 0;
+    public int MouseButtonTurn = 1;
 
 
-    public float MoveSpeed { get; set; } = 5;
-    public float JumpVelocity { get; set; } = 5;
+    public float MoveSpeed = 5;
+    public float JumpVelocity = 5;
 
-    public string SelectedArrow { get; set; } //change type to bow once created.
-    public List<string> Arrows { get; set; } //change type to bow once created.
+    public string SelectedArrow; //change type to bow once created.
+    public List<string> Arrows; //change type to bow once created.
 
-    public string SelectedBow { get; set; } //change type to bow once created.
-    public List<string> Bows { get; set; } //change type to bow once created.
-    public int Strength { get; set; }
-    public int Stamina { get; private set; }
+    public string SelectedBow; //change type to bow once created.
+    public List<string> Bows; //change type to bow once created.
+    public int Strength;
+    public int Stamina;
 
     public List<string> Gear { get; set; } // future placeholder. Change type to "GearItem" once created.
 
