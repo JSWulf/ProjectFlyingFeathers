@@ -30,8 +30,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		//Initial pull of bow by pushing "space"
-		if (Input.GetKeyDown(KeyCode.Space)) {
+		//Initial pull of bow by pushing "F"
+		if (Input.GetKeyDown(KeyCode.F)) {
 			//Reset strength bar
 			reverse = false;
 			currentStrength = 0.0f;
@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
 		}
 		
 		//While holding "space" strength bar moves while stamina depletes
-		if (Input.GetKey("space")) {
+		if (Input.GetKey("f")) {
 			Pull(pullStrength);
 			Fatigue(0.02f); //TODO! Keep as flat rate?
 		}
