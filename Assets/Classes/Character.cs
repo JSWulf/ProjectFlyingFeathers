@@ -4,29 +4,145 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    private float xRotation;
-    private float yRotation;
+    //private properties
+    private float xRotation { get; set; }
+    private float yRotation { get; set; }
+    private Camera Cam { get; set; }
+    private Rigidbody RB { get; set; }
+
+    public float currentStamina = 100;
+    public float currentStrength = 0;
+
+    public bool reverse = false;
+
+    public float staminaRegenRate = 0.012f;
+    public float pullStrength = 0.4f;
+
+    public int reverseCount = 0;
+
+    //public properites
+
+
+    public KeyCode TurnLeft = KeyCode.A;
+    public KeyCode TurnRight = KeyCode.D;
+
+    public KeyCode PlayerJump = KeyCode.Space;
+
+    public int MouseButtonFire = 0;
+    public int MouseButtonTurn = 1;
+
+    public StrengthBar strengthBar;
+    public StaminaBar staminaBar;
+
     public float MoveSpeed = 5;
     public float JumpVelocity = 5;
-    private Camera Cam;
-    private Rigidbody RB;
-    
+
+    public string SelectedArrow; //change type to bow once created.
+    public List<string> Arrows; //change type to bow once created.
+
+    public string SelectedBow; //change type to bow once created.
+    public List<string> Bows; //change type to bow once created.
+    public int Strength = 100;
+    public int Stamina = 100;
+
+    public List<string> Gear { get; set; } // future placeholder. Change type to "GearItem" once created.
 
     // Start is called before the first frame update
     void Start()
     {
         Cam = Camera.main;
         RB = GetComponent<Rigidbody>();
+        strengthBar.SetMaxStrength(Strength);
     }
 
     // Update is called once per frame
     void Update()
     {
-        float mouseX = Input.GetAxis("Pitch");
-        float mouseY = Input.GetAxis("Yaw");
+        //float mouseX = Input.GetAxis("Pitch");
+        //float mouseY = Input.GetAxis("Yaw");
 
-        yRotation += mouseY;
-        xRotation += mouseX;
+        //float Forward = Input.GetAxis("MoveForward");
+        //float Right = Input.GetAxis("MoveRight");
+
+
+        //turn if right-click, A, or D is held
+        if (Input.GetKey(TurnLeft))
+        {
+            Turn(-45, Input.GetAxis("Yaw"));
+        }
+        else if (Input.GetKey(TurnRight))
+        {
+            Turn(45, Input.GetAxis("Yaw"));
+        }
+        else if (Input.GetMouseButton(MouseButtonTurn))
+        {
+            // Turn(mouseX, mouseY);
+            Turn(Input.GetAxis("Pitch"), Input.GetAxis("Yaw"));
+        }
+
+        //Initial pull of bow by pushing "space"
+        if (Input.GetMouseButtonDown(MouseButtonFire))
+        {
+            //Reset strength bar
+            reverse = false;
+            currentStrength = 0.0f;
+            strengthBar.SetMaxStrength(Strength);
+            pullStrength = 0.2f;
+        }
+
+        if (Input.GetMouseButton(MouseButtonFire))
+        {
+            //SelectedBow.Draw()
+            //While holding "space" strength bar moves while stamina depletes
+            Pull(pullStrength);
+            Fatigue(0.02f); //TODO! Keep as flat rate?
+        }
+        if (Input.GetMouseButtonUp(MouseButtonFire))
+        {
+            //Fire()
+        }
+
+        if (Input.GetMouseButtonUp(MouseButtonTurn) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A))
+        {
+            xRotation = 0;
+            yRotation = 0;
+        }
+
+        //jump handler
+        if (Input.GetKeyDown(PlayerJump))
+        {
+            //RB.velocity = new Vector3(0, JumpVelocity, 0);
+            Jump();
+        }
+
+        //move
+        Move(Input.GetAxis("MoveForward"), Input.GetAxis("MoveRight"));
+
+        UpdateStamina();
+        //debug:
+        //print("MouseX: " + mouseX);
+        //print("MouseY: " + mouseY);
+        //print("Forward: " + Forward);
+        //print("Right: " + Right);
+        //print(yRPos);
+    }
+
+    /// <summary>
+    /// Fire the bow - either when fire button released or stamina runs out.
+    /// </summary>
+    public void Fire()
+    {
+        //check stamina against strength for fire's % rating
+
+        //selectedBow.fire(float %)
+        
+    }
+
+    public void Turn(float x, float y)
+    {
+        yRotation += y;
+        xRotation += x;
+        
         yRotation = Mathf.Clamp(yRotation, -45, 45); //max turn speed
         xRotation = Mathf.Clamp(xRotation, -90, 90); //max turn speed
 
@@ -51,27 +167,115 @@ public class Character : MonoBehaviour
                 Cam.transform.Rotate(new Vector3(-yRotation, 0, 0) * Time.deltaTime);
             }
         }
-        
-        // player movement - forward, backward, left, right
-        float Right = Input.GetAxis("MoveRight");// * MoveSpeed/1000;
+    }
 
-        float Forward = Input.GetAxis("MoveForward");// * MoveSpeed/1000;
+    public void Move(float f, float r)
+    {
+        gameObject.transform.Translate(
+            (Vector3.right * (r * MoveSpeed) 
+            + Vector3.forward * (f * MoveSpeed)
+            ) * Time.deltaTime);
+    }
 
-        //jump handler
-        if (Input.GetKeyDown(KeyCode.Space))
+    public void Jump()
+    {
+        if (RB.velocity.y < 0.1 && RB.velocity.y > -0.1)
         {
             RB.velocity = new Vector3(0, JumpVelocity, 0);
         }
         
-        gameObject.transform.Translate((Vector3.right * (Right * MoveSpeed) + Vector3.forward * (Forward * MoveSpeed)) * Time.deltaTime);
+    }
 
-        //debug:
-        //print("MouseX: " + mouseX);
-        //print("MouseY: " + yRotation);
-        //print("Forward: " + Forward);
-        //print("Right: " + Right);
-        //print(yRPos);
+    void UpdateStamina()
+    {
+        //When stamina reaches 0, slow down regen rate
+        if (currentStamina <= 0)
+        {
+            staminaRegenRate = 0.007f;
+        }
+        else if (currentStamina >= 25 && currentStamina < 60)
+        { //Once stamina reaches 25 again, increase regen rate
+            staminaRegenRate = 0.01f;
+        }
+        else if (currentStamina >= 60)
+        { //Once stamina reaches 60 again, increase regen rate
+            staminaRegenRate = 0.012f;
+        }
 
+        //Continually recharge stamina guage
+        if (currentStamina < 100)
+        {
+            currentStamina += staminaRegenRate;
+            staminaBar.SetStamina(currentStamina);
+        }
+    }
 
+    //Method for draining stamina guage
+    void Fatigue(float staminaLoss)
+    {
+        currentStamina -= staminaLoss;
+        //Don't allow stamina to go below -10
+        if (currentStamina < -10)
+        {
+            currentStamina = -10;
+        }
+        staminaBar.SetStamina(currentStamina);
+    }
+
+    //Method for determining current strength
+    void Pull(float strength)
+    {
+        //Based on current strength, decrease pull strength rate
+        switch (currentStrength)
+        {
+            case 50:
+                pullStrength *= 0.5f;
+                break;
+            case 75:
+                pullStrength *= 0.85f;
+                break;
+        }
+
+        //In reverse, lower strength.  This happens after strength reaches 100 for the first time.
+        if (reverse)
+        {
+            currentStrength -= strength;
+            switch (reverseCount)
+            {
+                case 0:  //On the first reverse, do not go lower than 50 strength
+                    if (currentStrength < 50)
+                    {
+                        reverseCount++;
+                        reverse = false;
+                    }
+                    break;
+                case 1:  //On the second reverse, do not go lower than 60 strength
+                    if (currentStrength < 60)
+                    {
+                        reverseCount++;
+                        reverse = false;
+                    }
+                    break;
+                case 2:  //On the third or more reversals, do not go lower than 65 strength
+                    if (currentStrength < 65)
+                    {
+                        reverse = false;
+                    }
+                    break;
+            }
+        }
+        else
+        { //Increase strength
+            currentStrength += strength;
+            if (currentStrength >= 100)
+            {
+                reverse = true;
+            }
+        }
+        if (currentStamina <= 0.0f)
+        {
+            currentStrength = 0.0f;
+        }
+        strengthBar.SetStrength(currentStrength);
     }
 }
