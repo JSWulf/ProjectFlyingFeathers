@@ -38,12 +38,13 @@ public class Bow : MonoBehaviour
 
         Debug.DrawRay(LP.transform.position, end, Color.red, 2, true);
 
-    //    print(LP.transform.position.x + " " +
-    //        LP.transform.position.y + " " +
-    //        LP.transform.position.z);
+        //print(LP.transform.position.x + " " +
+        //    LP.transform.position.y + " " +
+        //    LP.transform.position.z);
 
-    //    print(  end.x + " " +
-    //            end.y + " " +
-    //            end.z);
+        //print(end.x + " " +
+        //        end.y + " " +
+        //        end.z);
+
     }
 }
