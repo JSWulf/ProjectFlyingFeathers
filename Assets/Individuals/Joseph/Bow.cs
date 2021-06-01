@@ -7,6 +7,8 @@ public class Bow : MonoBehaviour
 
     private GameObject LP;
 
+    public GameObject arrow;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +22,15 @@ public class Bow : MonoBehaviour
     }
 
     /// <summary>
-    /// Pull the bow back
+    /// Pull the bow back - include arrow
     /// </summary>
-    public void Draw()
+    public void Draw(GameObject a)
     {
-
+        if (arrow == null)
+        {
+            arrow = a;
+        }
+        Instantiate(arrow, new Vector3(0, 0, 0), Quaternion.identity);
     }
 
     /// <summary>

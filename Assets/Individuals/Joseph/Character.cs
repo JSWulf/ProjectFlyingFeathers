@@ -37,7 +37,7 @@ public class Character : MonoBehaviour
     public float MoveSpeed = 5;
     public float JumpVelocity = 5;
 
-    public string SelectedArrow; //change type to arrow once created.
+    public GameObject SelectedArrow; //change type to arrow once created.
     public List<string> Arrows; //change type to arrow once created.
 
     public Bow SelectedBow; //change type to bow once created.
@@ -52,6 +52,7 @@ public class Character : MonoBehaviour
     {
         Cam = Camera.main;
         RB = GetComponent<Rigidbody>();
+        //strengthBar = GetComponent<StrengthBar>();
         strengthBar.SetMaxStrength(Strength);
 
 
@@ -94,8 +95,7 @@ public class Character : MonoBehaviour
 
         if (Input.GetMouseButton(MouseButtonFire))
         {
-            //SelectedBow.Draw()
-            //While holding "space" strength bar moves while stamina depletes
+            SelectedBow.Draw(SelectedArrow);
             Pull(pullStrength);
             Fatigue(0.02f); //TODO! Keep as flat rate?
         }
