@@ -37,11 +37,11 @@ public class Character : MonoBehaviour
     public float MoveSpeed = 5;
     public float JumpVelocity = 5;
 
-    public string SelectedArrow; //change type to bow once created.
-    public List<string> Arrows; //change type to bow once created.
+    public GameObject SelectedArrow; //change type to arrow once created.
+    public List<string> Arrows; //change type to arrow once created.
 
-    public string SelectedBow; //change type to bow once created.
-    public List<string> Bows; //change type to bow once created.
+    public Bow SelectedBow; //change type to bow once created.
+    public List<Bow> Bows; //change type to bow once created.
     public int Strength = 100;
     public int Stamina = 100;
 
@@ -52,7 +52,10 @@ public class Character : MonoBehaviour
     {
         Cam = Camera.main;
         RB = GetComponent<Rigidbody>();
+        //strengthBar = GetComponent<StrengthBar>();
         strengthBar.SetMaxStrength(Strength);
+
+
     }
 
     // Update is called once per frame
@@ -92,14 +95,13 @@ public class Character : MonoBehaviour
 
         if (Input.GetMouseButton(MouseButtonFire))
         {
-            //SelectedBow.Draw()
-            //While holding "space" strength bar moves while stamina depletes
+            SelectedBow.Draw(SelectedArrow);
             Pull(pullStrength);
             Fatigue(0.02f); //TODO! Keep as flat rate?
         }
         if (Input.GetMouseButtonUp(MouseButtonFire))
         {
-            //Fire()
+            Fire();
         }
 
         if (Input.GetMouseButtonUp(MouseButtonTurn) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A))
@@ -134,7 +136,7 @@ public class Character : MonoBehaviour
     {
         //check stamina against strength for fire's % rating
 
-        //selectedBow.fire(float %)
+        SelectedBow.Fire();
         
     }
 
