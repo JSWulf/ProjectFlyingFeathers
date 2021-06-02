@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
+    private bool Fired = false;
+    private float FireStr = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,11 +15,15 @@ public class Arrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Fired)
+        {
+            gameObject.transform.Translate(Vector3.forward * FireStr * Time.deltaTime);
+        }
     }
 
-    public void Move(Vector3 location)
+    public void Fire(float str)
     {
-        this.transform.position = location;
+        Fired = true;
+        FireStr = str;
     }
 }

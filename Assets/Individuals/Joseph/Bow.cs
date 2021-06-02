@@ -49,9 +49,9 @@ public class Bow : MonoBehaviour
 
         Vector3 end = LP.transform.forward * 10000 ;
 
-        Debug.DrawRay(LP.transform.position, end, Color.red, 2, true);
+        //Debug.DrawRay(LP.transform.position, end, Color.red, 2, true);
 
-
+        NockedArrow.GetComponent<Arrow>().Fire(10);
         NockedArrow = null;
 
         //print(LP.transform.position.x + " " +
