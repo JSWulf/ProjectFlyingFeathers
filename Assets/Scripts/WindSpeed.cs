@@ -27,6 +27,7 @@ public class WindSpeed : MonoBehaviour
 			windSpeed--;
 		}
 		
-		windArrow.rectTransform.eulerAngles = new Vector3(0,0,rotation);
+        //commented while you look for an arrow - this was causing null ref errors -- jw
+		//windArrow.rectTransform.eulerAngles = new Vector3(0,0,rotation);
     }
 }

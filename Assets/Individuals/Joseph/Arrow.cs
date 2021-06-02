@@ -15,4 +15,9 @@ public class Arrow : MonoBehaviour
     {
         
     }
+
+    public void Move(Vector3 location)
+    {
+        this.transform.Translate(location);
+    }
 }

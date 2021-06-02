@@ -7,6 +7,10 @@ public class Bow : MonoBehaviour
 
     private GameObject LP;
 
+    public GameObject arrow;
+
+    private bool BowFired = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,14 +20,30 @@ public class Bow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(arrow != null)
+        {
+            //arrow.transform.position = LP.transform.position;
+            //arrow.transform.rotation = LP.transform.rotation;
+            //arrow.transform.SetPositionAndRotation(LP.transform.position, LP.transform.rotation);
+            //arrow.transform.SetPositionAndRotation(LP.transform.position, LP.transform.rotation);
+
+
+            //arrow.transform.Translate(LP.transform.position);
+            arrow.GetComponent<Arrow>().Move(LP.transform.position);
+            print(LP.transform.position);
+        }
     }
 
     /// <summary>
-    /// Pull the bow back
+    /// Pull the bow back - include arrow
     /// </summary>
-    public void Draw()
+    public void Draw(GameObject a)
     {
+        if (arrow == null)
+        {
+            arrow = a;
+            Instantiate(arrow, LP.transform.position, LP.transform.rotation);
+        }
 
     }
 
@@ -34,9 +54,11 @@ public class Bow : MonoBehaviour
     {
         print("Fire!!");
 
-        Vector3 end = LP.transform.up * 10000 ;
+        Vector3 end = LP.transform.forward * 10000 ;
 
         Debug.DrawRay(LP.transform.position, end, Color.red, 2, true);
+
+        arrow = null;
 
         //print(LP.transform.position.x + " " +
         //    LP.transform.position.y + " " +
