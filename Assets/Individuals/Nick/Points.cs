@@ -20,12 +20,12 @@ public class Points : MonoBehaviour
 		
     }
 	
-	void SetPoints(int points) 
+	public void SetPoints(int points) 
 	{
 		this.points = points;
 	}
 	
-	void AddPoints(int points) 
+	public void AddPoints(int points) 
 	{
 		this.points += points;
 	}
