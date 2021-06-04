@@ -45,7 +45,7 @@ public class Bow : MonoBehaviour
     /// </summary>
     public void Fire()
     {
-        print("Fire!!");
+        //print("Fire!!");
 
         Vector3 end = LP.transform.forward * 10000 ;
 

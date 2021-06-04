@@ -23,7 +23,12 @@ public class Arrow : MonoBehaviour
 
     public void Fire(float str)
     {
-        Fired = true;
         FireStr = str;
+        Fired = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Fired = false;
     }
 }
