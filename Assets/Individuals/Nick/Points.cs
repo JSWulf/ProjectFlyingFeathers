@@ -17,11 +17,16 @@ public class Points : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		//TODO! Update points based on targets hit
-        PointsText.text = points.ToString();
 		
-		if (Input.GetKeyDown(KeyCode.Tab)){
-			points++;
-		}
     }
+	
+	public void SetPoints(int points) 
+	{
+		this.points = points;
+	}
+	
+	public void AddPoints(int points) 
+	{
+		this.points += points;
+	}
 }
