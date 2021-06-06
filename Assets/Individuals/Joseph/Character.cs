@@ -167,6 +167,12 @@ public class Character : MonoBehaviour
             else
             {
                 Cam.transform.Rotate(new Vector3(-yRotation, 0, 0) * Time.deltaTime);
+                
+                if (SelectedBow.NockedArrow != null)
+                {
+                    SelectedBow.NockedArrow.transform.rotation = SelectedBow.LP.transform.rotation;
+                }
+                
             }
         }
     }
@@ -177,6 +183,12 @@ public class Character : MonoBehaviour
             (Vector3.right * (r * MoveSpeed) 
             + Vector3.forward * (f * MoveSpeed)
             ) * Time.deltaTime);
+
+        if (SelectedBow.NockedArrow != null)
+        {
+            SelectedBow.NockedArrow.transform.position = SelectedBow.LP.transform.position;
+        }
+        //NockedArrow.transform.position = LP.transform.position;
     }
 
     public void Jump()
