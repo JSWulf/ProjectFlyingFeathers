@@ -45,7 +45,7 @@ public class Bow : MonoBehaviour
     /// <summary>
     /// Release the arrow
     /// </summary>
-    public void Fire()
+    public void Fire(float str)
     {
         //print("Fire!!");
 
@@ -53,7 +53,7 @@ public class Bow : MonoBehaviour
 
         //Debug.DrawRay(LP.transform.position, end, Color.red, 2, true);
 
-        NockedArrow.GetComponent<Arrow>().Fire(10);
+        NockedArrow.GetComponent<Arrow>().Fire(str);
         NockedArrow = null;
 
         //print(LP.transform.position.x + " " +

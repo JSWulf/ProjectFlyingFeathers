@@ -16,7 +16,7 @@ public class Character : MonoBehaviour
     public bool reverse = false;
 
     public float staminaRegenRate = 0.012f;
-    public float pullStrength = 0.4f;
+    public float pullStrength = 1f;
 
     public int reverseCount = 0;
 
@@ -81,6 +81,9 @@ public class Character : MonoBehaviour
         {
             // Turn(mouseX, mouseY);
             Turn(Input.GetAxis("Pitch"), Input.GetAxis("Yaw"));
+        } else
+        {
+            RB.constraints = RigidbodyConstraints.FreezeRotation;
         }
 
         //Initial pull of bow by pushing "space"
@@ -136,7 +139,7 @@ public class Character : MonoBehaviour
     {
         //check stamina against strength for fire's % rating
 
-        SelectedBow.Fire();
+        SelectedBow.Fire(currentStrength);
         
     }
 
