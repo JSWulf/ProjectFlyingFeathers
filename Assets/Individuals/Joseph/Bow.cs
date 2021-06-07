@@ -5,9 +5,9 @@ using UnityEngine;
 public class Bow : MonoBehaviour
 {
 
-    private GameObject LP;
+    public GameObject LP { get; set; }
 
-    public GameObject NockedArrow;
+    public GameObject NockedArrow { get; set; }
 
     private bool BowFired = false;
 
@@ -22,7 +22,9 @@ public class Bow : MonoBehaviour
     {
         if(NockedArrow != null)
         {
-            NockedArrow.transform.SetPositionAndRotation(LP.transform.position, LP.transform.rotation);
+            //NockedArrow.transform.SetPositionAndRotation(LP.transform.position, LP.transform.rotation);
+            //NockedArrow.transform.position = LP.transform.position;
+            //NockedArrow.transform.rotation = LP.transform.rotation;
             
         }
     }
@@ -43,15 +45,15 @@ public class Bow : MonoBehaviour
     /// <summary>
     /// Release the arrow
     /// </summary>
-    public void Fire()
+    public void Fire(float str)
     {
-        print("Fire!!");
+        //print("Fire!!");
 
         Vector3 end = LP.transform.forward * 10000 ;
 
         //Debug.DrawRay(LP.transform.position, end, Color.red, 2, true);
 
-        NockedArrow.GetComponent<Arrow>().Fire(10);
+        NockedArrow.GetComponent<Arrow>().Fire(str/2);
         NockedArrow = null;
 
         //print(LP.transform.position.x + " " +

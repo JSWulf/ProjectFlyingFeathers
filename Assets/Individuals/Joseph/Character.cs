@@ -16,7 +16,7 @@ public class Character : MonoBehaviour
     public bool reverse = false;
 
     public float staminaRegenRate = 0.012f;
-    public float pullStrength = 0.4f;
+    public float pullStrength = 50f;
 
     public int reverseCount = 0;
 
@@ -81,6 +81,9 @@ public class Character : MonoBehaviour
         {
             // Turn(mouseX, mouseY);
             Turn(Input.GetAxis("Pitch"), Input.GetAxis("Yaw"));
+        } else
+        {
+            RB.constraints = RigidbodyConstraints.FreezeRotation;
         }
 
         //Initial pull of bow by pushing "space"
@@ -90,7 +93,7 @@ public class Character : MonoBehaviour
             reverse = false;
             currentStrength = 0.0f;
             strengthBar.SetMaxStrength(Strength);
-            pullStrength = 0.2f;
+            //pullStrength = 0.2f;
         }
 
         if (Input.GetMouseButton(MouseButtonFire))
@@ -136,7 +139,7 @@ public class Character : MonoBehaviour
     {
         //check stamina against strength for fire's % rating
 
-        SelectedBow.Fire();
+        SelectedBow.Fire(currentStrength);
         
     }
 
@@ -167,6 +170,12 @@ public class Character : MonoBehaviour
             else
             {
                 Cam.transform.Rotate(new Vector3(-yRotation, 0, 0) * Time.deltaTime);
+                
+                if (SelectedBow.NockedArrow != null)
+                {
+                    SelectedBow.NockedArrow.transform.rotation = SelectedBow.LP.transform.rotation;
+                }
+                
             }
         }
     }
@@ -177,6 +186,12 @@ public class Character : MonoBehaviour
             (Vector3.right * (r * MoveSpeed) 
             + Vector3.forward * (f * MoveSpeed)
             ) * Time.deltaTime);
+
+        if (SelectedBow.NockedArrow != null)
+        {
+            SelectedBow.NockedArrow.transform.position = SelectedBow.LP.transform.position;
+        }
+        //NockedArrow.transform.position = LP.transform.position;
     }
 
     public void Jump()
@@ -228,15 +243,15 @@ public class Character : MonoBehaviour
     void Pull(float strength)
     {
         //Based on current strength, decrease pull strength rate
-        switch (currentStrength)
-        {
-            case 50:
-                pullStrength *= 0.5f;
-                break;
-            case 75:
-                pullStrength *= 0.85f;
-                break;
-        }
+        //switch (currentStrength)
+        //{
+        //    case 50:
+        //        pullStrength *= 0.5f;
+        //        break;
+        //    case 75:
+        //        pullStrength *= 0.85f;
+        //        break;
+        //}
 
         //In reverse, lower strength.  This happens after strength reaches 100 for the first time.
         if (reverse)
@@ -245,21 +260,21 @@ public class Character : MonoBehaviour
             switch (reverseCount)
             {
                 case 0:  //On the first reverse, do not go lower than 50 strength
-                    if (currentStrength < 50)
+                    if (currentStrength < 70)
                     {
                         reverseCount++;
                         reverse = false;
                     }
                     break;
                 case 1:  //On the second reverse, do not go lower than 60 strength
-                    if (currentStrength < 60)
+                    if (currentStrength < 75)
                     {
                         reverseCount++;
                         reverse = false;
                     }
                     break;
                 case 2:  //On the third or more reversals, do not go lower than 65 strength
-                    if (currentStrength < 65)
+                    if (currentStrength < 80)
                     {
                         reverse = false;
                     }
