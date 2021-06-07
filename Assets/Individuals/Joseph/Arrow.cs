@@ -35,9 +35,13 @@ public class Arrow : MonoBehaviour
             if (AirTime > 0.01)
             {
                 rb.detectCollisions = true;
+                
+            }
+            if (AirTime > FireStr/1000)
+            {
                 rb.useGravity = true;
             }
-            
+
 
             transform.rotation = Quaternion.LookRotation(rb.velocity);
         }
@@ -62,8 +66,9 @@ public class Arrow : MonoBehaviour
 
         var c = Mathf.Clamp(str / 30, 0.7f, 1.5f);
         print(str + " " + c + " " + c/4.5f);
-        //BC.size = new Vector3(BC.size.x, BC.size.y, c);
-        //BC.center = new Vector3(BC.center.x, BC.center.y, c/4.5f);
+        BC.size = new Vector3(BC.size.x, BC.size.y, c);
+        BC.center = new Vector3(BC.center.x, BC.center.y, c/4.5f);
+        //rb.detectCollisions = true;
         
     }
 
@@ -72,6 +77,7 @@ public class Arrow : MonoBehaviour
         //print("hit");
         Fired = false;
         rb.velocity = new Vector3(0,0,0);
+
     }
 
     private void OnCollisionEnter(Collision other)

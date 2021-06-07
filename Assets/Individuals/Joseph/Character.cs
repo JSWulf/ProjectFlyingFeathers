@@ -16,7 +16,7 @@ public class Character : MonoBehaviour
     public bool reverse = false;
 
     public float staminaRegenRate = 0.012f;
-    public float pullStrength = 1f;
+    public float pullStrength = 50f;
 
     public int reverseCount = 0;
 
@@ -93,7 +93,7 @@ public class Character : MonoBehaviour
             reverse = false;
             currentStrength = 0.0f;
             strengthBar.SetMaxStrength(Strength);
-            pullStrength = 0.2f;
+            //pullStrength = 0.2f;
         }
 
         if (Input.GetMouseButton(MouseButtonFire))
@@ -243,15 +243,15 @@ public class Character : MonoBehaviour
     void Pull(float strength)
     {
         //Based on current strength, decrease pull strength rate
-        switch (currentStrength)
-        {
-            case 50:
-                pullStrength *= 0.5f;
-                break;
-            case 75:
-                pullStrength *= 0.85f;
-                break;
-        }
+        //switch (currentStrength)
+        //{
+        //    case 50:
+        //        pullStrength *= 0.5f;
+        //        break;
+        //    case 75:
+        //        pullStrength *= 0.85f;
+        //        break;
+        //}
 
         //In reverse, lower strength.  This happens after strength reaches 100 for the first time.
         if (reverse)
@@ -260,21 +260,21 @@ public class Character : MonoBehaviour
             switch (reverseCount)
             {
                 case 0:  //On the first reverse, do not go lower than 50 strength
-                    if (currentStrength < 50)
+                    if (currentStrength < 70)
                     {
                         reverseCount++;
                         reverse = false;
                     }
                     break;
                 case 1:  //On the second reverse, do not go lower than 60 strength
-                    if (currentStrength < 60)
+                    if (currentStrength < 75)
                     {
                         reverseCount++;
                         reverse = false;
                     }
                     break;
                 case 2:  //On the third or more reversals, do not go lower than 65 strength
-                    if (currentStrength < 65)
+                    if (currentStrength < 80)
                     {
                         reverse = false;
                     }
