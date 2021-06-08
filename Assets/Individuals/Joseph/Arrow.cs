@@ -7,6 +7,7 @@ public class Arrow : MonoBehaviour
 {
     private Rigidbody rb;
     private BoxCollider BC;
+    private CapsuleCollider CC;
 
     private bool Fired = false;
     private float FireStr = 0;
@@ -14,13 +15,18 @@ public class Arrow : MonoBehaviour
     private float Timer = 0f;
     private float AirTime = 0f;
 
+    private bool Grav = false;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.detectCollisions = false;
+        //rb.detectCollisions = false;
         rb.useGravity = false;
         BC = GetComponent<BoxCollider>();
+        CC = GetComponent<CapsuleCollider>();
+
+        CC.enabled = false;
     }
 
     // Update is called once per frame
@@ -32,14 +38,17 @@ public class Arrow : MonoBehaviour
             //gameObject.transform.Translate(Vector3.forward * FireStr * Time.deltaTime);
             AirTime += Time.deltaTime;
 
-            if (AirTime > 0.01)
-            {
-                rb.detectCollisions = true;
+            //if (AirTime > 0.01)
+            //{
+            //    rb.detectCollisions = true;
                 
-            }
-            if (AirTime > FireStr/1000)
+            //}
+            
+            if (AirTime > FireStr/500 && !Grav)
             {
+                print(AirTime + " " + FireStr / 500);
                 rb.useGravity = true;
+                Grav = true;
             }
 
 
@@ -58,7 +67,11 @@ public class Arrow : MonoBehaviour
 
     public void Fire(float str)
     {
-
+        //high speed collider
+        if (str > 20f)
+        {
+            CC.enabled = true;
+        }
         
         FireStr = str;
         Fired = true;
@@ -66,17 +79,19 @@ public class Arrow : MonoBehaviour
 
         var c = Mathf.Clamp(str / 30, 0.7f, 1.5f);
         print(str + " " + c + " " + c/4.5f);
-        BC.size = new Vector3(BC.size.x, BC.size.y, c);
-        BC.center = new Vector3(BC.center.x, BC.center.y, c/4.5f);
+        //BC.size = new Vector3(BC.size.x, BC.size.y, c);
+        //BC.center = new Vector3(BC.center.x, BC.center.y, c/4.5f);
         //rb.detectCollisions = true;
         
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        //print("hit");
-        Fired = false;
-        rb.velocity = new Vector3(0,0,0);
+        print("hit");
+        //Fired = false;
+        rb.velocity = gameObject.transform.forward*10;
+        CC.enabled = false;
+        rb.useGravity = false;
 
     }
 

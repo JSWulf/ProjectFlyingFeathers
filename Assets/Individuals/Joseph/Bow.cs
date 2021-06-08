@@ -53,7 +53,7 @@ public class Bow : MonoBehaviour
 
         //Debug.DrawRay(LP.transform.position, end, Color.red, 2, true);
 
-        NockedArrow.GetComponent<Arrow>().Fire(str/2);
+        NockedArrow.GetComponent<Arrow>().Fire(str);
         NockedArrow = null;
 
         //print(LP.transform.position.x + " " +
