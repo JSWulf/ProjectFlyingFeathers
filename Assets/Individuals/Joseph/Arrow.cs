@@ -65,6 +65,11 @@ public class Arrow : MonoBehaviour
         }
     }
 
+    public float GetAirTime()
+    {
+        return AirTime;
+    }
+
     public void Fire(float str)
     {
         //high speed collider
