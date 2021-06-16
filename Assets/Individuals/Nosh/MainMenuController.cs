@@ -10,9 +10,6 @@ public class MainMenuController : MonoBehaviour
     public GameObject Settings_Panel;
     public GameObject QuitConfirmation_Panel;
 
-    //added this variable to fix compiler error - jw
-    public GameObject BowBrowser_Panel;
-
 
     public void LoadGame()
     {
