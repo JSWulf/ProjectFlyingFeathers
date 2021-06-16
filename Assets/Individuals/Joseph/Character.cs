@@ -158,14 +158,14 @@ public class Character : MonoBehaviour
         if (yRPos < 280 && yRPos >= 200 && yRotation > 0)
         {
             // do nothing
-            print("upper clamp");
+            //print("upper clamp");
         }
         else
         {
             if (yRPos >= 60 && yRPos < 200 && -yRotation > 0)
             {
                 //do nothing?
-                print("lower clamp");
+                //print("lower clamp");
             }
             else
             {

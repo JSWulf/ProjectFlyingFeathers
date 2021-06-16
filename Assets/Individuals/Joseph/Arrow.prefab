@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -5300339692072438412}
   - component: {fileID: 1542351425221617699}
   - component: {fileID: 3912802683580252093}
+  - component: {fileID: 8735482386569080823}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Arrow
@@ -26,8 +27,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8089758258651960797}
-  m_LocalRotation: {x: -0.05715272, y: -0.4694421, z: -0.030468268, w: 0.8805847}
-  m_LocalPosition: {x: 0.11909734, y: 1.8509141, z: 0.9466673}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2263991403120589080}
@@ -75,6 +76,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.01, y: 0.01, z: 0.7}
   m_Center: {x: 0, y: 0, z: 0.15}
+--- !u!136 &8735482386569080823
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8089758258651960797}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.01
+  m_Height: 5
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 3}
 --- !u!1001 &2268490297060993512
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,21 +6,24 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour
 {
     public GameObject MainMenu_Panel;
-    public GameObject BowBrowswer_Panel;
+    public GameObject BowBrowser_Panel;
     public GameObject Settings_Panel;
     public GameObject QuitConfirmation_Panel;
-
-    //added this variable to fix compiler error - jw
-    public GameObject BowBrowser_Panel;
 
 
     public void LoadGame()
     {
         //Load game scene
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("LoadGameScene");
     }
 
-    public void ToggleBowBrowswer()
+    public void NewGame()
+    {
+        //New game scene
+        SceneManager.LoadScene("NewGameScene");
+    }
+
+    public void ToggleBowBrowser()
     {
         //Enable or disable Bow Browser Scene
         //Enable or disable settings menu
