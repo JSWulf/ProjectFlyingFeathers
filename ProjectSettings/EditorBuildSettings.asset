@@ -4,10 +4,23 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: [{enabled: 1, path: Assets/Individuals/Eric/LevelSelectMenu.unity, guid: 1857f27a08fe62341a2e48b98dd27c4d},
-    {enabled: 1, path: Assets/Individuals/Eric/CubeLevel.unity, guid: a45a383f616a0434a87b8292e53e4f31},
-    {enabled: 1, path: Assets/Individuals/Eric/SphereLevel.unity, guid: f63e0b005fc25c346a35f004bde95479},
-    {enabled: 1, path: Assets/Individuals/Nosh/Main_Menu.unity, guid: c744bc8f8d8d9bc4c95d12e49d3b36f0},
-    {enabled: 1, path: Assets/Individuals/Nosh/LoadGameScene.unity, guid: ff41d822a89ba26418c59356c96f11e7},
-    {enabled: 1, path: Assets/Individuals/Nosh/NewGameScene.unity, guid: 62c008e58e03ef04cacdc70c6fe3ff63}]
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Individuals/Nosh/Main_Menu.unity
+    guid: c744bc8f8d8d9bc4c95d12e49d3b36f0
+  - enabled: 1
+    path: Assets/Individuals/Nosh/LoadGameScene.unity
+    guid: ff41d822a89ba26418c59356c96f11e7
+  - enabled: 1
+    path: Assets/Individuals/Nosh/NewGameScene.unity
+    guid: 62c008e58e03ef04cacdc70c6fe3ff63
+  - enabled: 1
+    path: Assets/Individuals/Eric/LevelSelectMenu.unity
+    guid: 1857f27a08fe62341a2e48b98dd27c4d
+  - enabled: 1
+    path: Assets/Individuals/Eric/CubeLevel.unity
+    guid: a45a383f616a0434a87b8292e53e4f31
+  - enabled: 1
+    path: Assets/Individuals/Eric/SphereLevel.unity
+    guid: f63e0b005fc25c346a35f004bde95479
   m_configObjects: {}
