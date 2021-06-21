@@ -55,6 +55,10 @@ public class Arrow : MonoBehaviour
                 Grav = true;
             }
 
+            if (AirTime > 100)
+            {
+                Destroy(gameObject);
+            }
 
             transform.rotation = Quaternion.LookRotation(rb.velocity);
         }
