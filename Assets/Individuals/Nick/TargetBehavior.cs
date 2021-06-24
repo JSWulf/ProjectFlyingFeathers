@@ -7,7 +7,7 @@ public class TargetBehavior : MonoBehaviour
     public bool moving = false;
     public Points pointsToAdd;
 
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +26,7 @@ public class TargetBehavior : MonoBehaviour
         if(col.collider.gameObject.CompareTag("Arrow"))
         {
             pointsToAdd.AddPoints(CalculatePoints(col));
+            transform.parent.GetComponent<TargetDestroy>().ArrowHit(this, col.gameObject);
         }
     }
 
@@ -41,4 +42,6 @@ public class TargetBehavior : MonoBehaviour
 
         return points;
     }
+
+    
 }
