@@ -17,6 +17,8 @@ public class Arrow : MonoBehaviour
 
     private bool Grav = false;
 
+    private TrailRenderer Trail;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,8 @@ public class Arrow : MonoBehaviour
         CC = GetComponent<CapsuleCollider>();
 
         CC.enabled = false;
+
+        
     }
 
     // Update is called once per frame
@@ -46,11 +50,15 @@ public class Arrow : MonoBehaviour
             
             if (AirTime > FireStr/500 && !Grav)
             {
-                print(AirTime + " " + FireStr / 500);
+                //print(AirTime + " " + FireStr / 500);
                 rb.useGravity = true;
                 Grav = true;
             }
 
+            if (AirTime > 100)
+            {
+                Destroy(gameObject);
+            }
 
             transform.rotation = Quaternion.LookRotation(rb.velocity);
         }
@@ -77,13 +85,13 @@ public class Arrow : MonoBehaviour
         {
             CC.enabled = true;
         }
-        
+
         FireStr = str;
         Fired = true;
         rb.velocity = gameObject.transform.forward*str;
 
         var c = Mathf.Clamp(str / 30, 0.7f, 1.5f);
-        print(str + " " + c + " " + c/4.5f);
+        //print(str + " " + c + " " + c/4.5f);
         //BC.size = new Vector3(BC.size.x, BC.size.y, c);
         //BC.center = new Vector3(BC.center.x, BC.center.y, c/4.5f);
         //rb.detectCollisions = true;
@@ -92,7 +100,7 @@ public class Arrow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("hit");
+        //print("hit");
         //Fired = false;
         rb.velocity = gameObject.transform.forward*10;
         CC.enabled = false;
