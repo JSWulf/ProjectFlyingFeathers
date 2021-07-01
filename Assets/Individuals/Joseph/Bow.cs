@@ -9,7 +9,8 @@ public class Bow : MonoBehaviour
 
     public GameObject NockedArrow { get; set; }
 
-    private bool BowFired = false;
+    private bool BowFired { get; set; } = false;
+    private int Redraw = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,17 @@ public class Bow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (BowFired)
+        {
+            if (Redraw >= 50)
+            {
+                BowFired = false;
+                Redraw = 0;
+            }
+            Redraw++;
+        }
+
         if(NockedArrow != null)
         {
             //NockedArrow.transform.SetPositionAndRotation(LP.transform.position, LP.transform.rotation);
@@ -34,10 +46,13 @@ public class Bow : MonoBehaviour
     /// </summary>
     public void Draw(GameObject a)
     {
-        if (NockedArrow == null)
+        if (!BowFired)
         {
-            NockedArrow = (GameObject)Instantiate(a, LP.transform.position, LP.transform.rotation);
-            
+            if (NockedArrow == null)
+            {
+                NockedArrow = (GameObject)Instantiate(a, LP.transform.position, LP.transform.rotation);
+
+            } 
         }
 
     }
@@ -49,12 +64,16 @@ public class Bow : MonoBehaviour
     {
         //print("Fire!!");
 
-        Vector3 end = LP.transform.forward * 10000 ;
+        if (!BowFired)
+        {
+            Vector3 end = LP.transform.forward * 10000;
 
-        //Debug.DrawRay(LP.transform.position, end, Color.red, 2, true);
+            //Debug.DrawRay(LP.transform.position, end, Color.red, 2, true);
 
-        NockedArrow.GetComponent<Arrow>().Fire(str);
-        NockedArrow = null;
+            NockedArrow.GetComponent<Arrow>().Fire(str);
+            NockedArrow = null;
+            BowFired = true; 
+        }
 
         //print(LP.transform.position.x + " " +
         //    LP.transform.position.y + " " +
