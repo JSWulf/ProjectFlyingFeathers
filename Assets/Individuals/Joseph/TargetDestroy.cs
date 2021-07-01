@@ -12,7 +12,7 @@ public class TargetDestroy : MonoBehaviour
     public int MaxHit=5;
     private int Hits = 0;
 
-    private List<GameObject> Arrows = new List<GameObject>();
+    public List<GameObject> Arrows { get; private set; } = new List<GameObject>(); 
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +31,8 @@ public class TargetDestroy : MonoBehaviour
         if (MaxHit > 0)
         {
             Arrows.Add(a);
+
+            a.transform.parent = transform;
 
             Hits++;
             if (Hits >= MaxHit)
