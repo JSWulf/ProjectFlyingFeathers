@@ -7,17 +7,23 @@ public class TargetBehavior : MonoBehaviour
     public bool moving = false;
     public Points pointsToAdd;
 
-    
+    public bool AlwaysFaceMe = false;
+    private Camera Cam;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        Cam = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (AlwaysFaceMe)
+        {
+            var cR = Cam.transform;
+            gameObject.transform.LookAt(cR);
+        }
     }
 
     void OnCollisionEnter(Collision col)

@@ -29,13 +29,13 @@ public class MainMenuController : MonoBehaviour
         //Enable or disable settings menu
         if (BowBrowser_Panel.activeInHierarchy)
         {
-            MainMenu_Panel.SetActive(false);
-            BowBrowser_Panel.SetActive(true);
+            MainMenu_Panel.SetActive(true);
+            BowBrowser_Panel.SetActive(false);
         }
         else
         {
-            MainMenu_Panel.SetActive(true);
-            BowBrowser_Panel.SetActive(false);
+            MainMenu_Panel.SetActive(false);
+            BowBrowser_Panel.SetActive(true);
         }
     }
 
@@ -44,13 +44,13 @@ public class MainMenuController : MonoBehaviour
         //Enable or disable settings menu
         if (Settings_Panel.activeInHierarchy)
         {
-            MainMenu_Panel.SetActive(false);
-            Settings_Panel.SetActive(true);
+            MainMenu_Panel.SetActive(true);
+            Settings_Panel.SetActive(false);
         }
         else
         {
-            MainMenu_Panel.SetActive(true);
-            Settings_Panel.SetActive(false);
+            MainMenu_Panel.SetActive(false);
+            Settings_Panel.SetActive(true);
         }
     }
 
