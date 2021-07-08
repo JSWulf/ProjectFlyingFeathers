@@ -8,6 +8,7 @@ public class Arrow : MonoBehaviour
     private Rigidbody rb;
     private BoxCollider BC;
     private CapsuleCollider CC;
+    private Camera Cam;
 
     private bool Fired = false;
     private float FireStr = 0;
@@ -27,10 +28,13 @@ public class Arrow : MonoBehaviour
         rb.useGravity = false;
         BC = GetComponent<BoxCollider>();
         CC = GetComponent<CapsuleCollider>();
+        Cam = Camera.main;
 
         CC.enabled = false;
 
-        
+        Trail = GetComponentInChildren<TrailRenderer>();
+        //Trail.enabled = false;
+        //Trail.emitting = false;
     }
 
     // Update is called once per frame
@@ -45,8 +49,15 @@ public class Arrow : MonoBehaviour
             //if (AirTime > 0.01)
             //{
             //    rb.detectCollisions = true;
-                
+
             //}
+
+            var dis = Vector3.Distance(Cam.transform.position, transform.position);
+            print(dis);
+            if (dis > 30)
+            {
+                Trail.endWidth = dis * 0.005f;
+            }
             
             if (AirTime > FireStr/500 && !Grav)
             {
@@ -86,6 +97,8 @@ public class Arrow : MonoBehaviour
             CC.enabled = true;
         }
 
+        //Trail.enabled = true;
+        //Trail.emitting = true;
         FireStr = str;
         Fired = true;
         rb.velocity = gameObject.transform.forward*str;
