@@ -19,7 +19,7 @@ public class LevelSelector : MonoBehaviour
     public Vector2 iconSpacing;
     private Rect panelDimensions;
     private Rect iconDimensions;
-    private int amountPerPage = 3;
+    private int amountPerPage;
     private int currentLevelCount;
 
     // Start is called before the first frame update

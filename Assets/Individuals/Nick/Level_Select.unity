@@ -417,7 +417,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0, y: -2}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1224262247
@@ -555,12 +555,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelHolder: {fileID: 1224262245}
-  levelIcon1: {fileID: 3429952502501108216, guid: 355ddeda5c5bfed428c6c687a330e7c8, type: 3}
-  levelIcon2: {fileID: 8724175298436459423, guid: 723863ab2d9e35942a511999a4894dc3, type: 3}
-  levelIcon3: {fileID: 657217403427920329, guid: 0956c0e8d0d29884d92be76cd2cec5f5, type: 3}
-  levelIcon4: {fileID: 3429952502501108216, guid: 355ddeda5c5bfed428c6c687a330e7c8, type: 3}
-  levelIcon5: {fileID: 8724175298436459423, guid: 723863ab2d9e35942a511999a4894dc3, type: 3}
-  levelIcon6: {fileID: 657217403427920329, guid: 0956c0e8d0d29884d92be76cd2cec5f5, type: 3}
+  levelIcon1: {fileID: 7512239289484716131, guid: f298d5a6410d75c4b8ee03e62434b67d, type: 3}
+  levelIcon2: {fileID: 4003988694205890186, guid: d45c83de12bf57142957b10bf3656d5d, type: 3}
+  levelIcon3: {fileID: 2932119356016303872, guid: 93b612eec4b223449b12eaa3a1ee1688, type: 3}
+  levelIcon4: {fileID: 7512239289484716131, guid: f298d5a6410d75c4b8ee03e62434b67d, type: 3}
+  levelIcon5: {fileID: 4003988694205890186, guid: d45c83de12bf57142957b10bf3656d5d, type: 3}
+  levelIcon6: {fileID: 2932119356016303872, guid: 93b612eec4b223449b12eaa3a1ee1688, type: 3}
   thisCanvas: {fileID: 794846603}
   numberOfLevels: 6
   iconSpacing: {x: 240, y: 0}
