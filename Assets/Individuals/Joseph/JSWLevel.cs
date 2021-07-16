@@ -15,6 +15,7 @@ public class JSWLevel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RenderSettings.skybox.SetFloat("_Rotation", Time.time * SkyboxSpeed);
+        //RenderSettings.skybox.SetFloat("_Rotation", Time.time * SkyboxSpeed);
+        
     }
 }

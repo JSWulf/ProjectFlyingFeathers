@@ -64,7 +64,7 @@ public class Bow : MonoBehaviour
     {
         //print("Fire!!");
 
-        if (!BowFired)
+        if (!BowFired && NockedArrow != null)
         {
             Vector3 end = LP.transform.forward * 10000;
 
