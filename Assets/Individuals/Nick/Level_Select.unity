@@ -559,7 +559,7 @@ MonoBehaviour:
   levelIcon2: {fileID: 4003988694205890186, guid: d45c83de12bf57142957b10bf3656d5d, type: 3}
   levelIcon3: {fileID: 2932119356016303872, guid: 93b612eec4b223449b12eaa3a1ee1688, type: 3}
   levelIcon4: {fileID: 7512239289484716131, guid: f298d5a6410d75c4b8ee03e62434b67d, type: 3}
-  levelIcon5: {fileID: 4003988694205890186, guid: d45c83de12bf57142957b10bf3656d5d, type: 3}
+  levelIcon5: {fileID: 4546201301829751287, guid: 63b9f4f4bbd1a6d448ac01e529d63a47, type: 3}
   levelIcon6: {fileID: 2932119356016303872, guid: 93b612eec4b223449b12eaa3a1ee1688, type: 3}
   thisCanvas: {fileID: 794846603}
   numberOfLevels: 6
