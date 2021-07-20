@@ -264,6 +264,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 3.2420044
       objectReference: {fileID: 0}
+    - target: {fileID: 284799137670822368, guid: 8673e37a44baec54789dd30a37df98f0, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 284799137670822368, guid: 8673e37a44baec54789dd30a37df98f0, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.8551377
+      objectReference: {fileID: 0}
+    - target: {fileID: 284799137670822368, guid: 8673e37a44baec54789dd30a37df98f0, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.9716981
+      objectReference: {fileID: 0}
+    - target: {fileID: 284799137670822368, guid: 8673e37a44baec54789dd30a37df98f0, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.38042897
+      objectReference: {fileID: 0}
+    - target: {fileID: 284799137670822368, guid: 8673e37a44baec54789dd30a37df98f0, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 382024139134396869, guid: 8673e37a44baec54789dd30a37df98f0, type: 3}
       propertyPath: MoveSpeed
       value: 5
@@ -382,6 +402,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8673e37a44baec54789dd30a37df98f0, type: 3}
+--- !u!1 &43370118 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7343188380245566379, guid: 8673e37a44baec54789dd30a37df98f0, type: 3}
+  m_PrefabInstance: {fileID: 43370117}
+  m_PrefabAsset: {fileID: 0}
+--- !u!45 &43370119
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43370118}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &79619206 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5565475704626922588, guid: f3df178bcef1f854fa6260cee8ea9cba, type: 3}
