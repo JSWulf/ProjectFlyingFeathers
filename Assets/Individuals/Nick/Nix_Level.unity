@@ -298,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 691957567}
     - target: {fileID: 382024139134396869, guid: 8673e37a44baec54789dd30a37df98f0, type: 3}
       propertyPath: pullStrength
-      value: 3
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 382024139134396869, guid: 8673e37a44baec54789dd30a37df98f0, type: 3}
       propertyPath: SelectedArrow

@@ -578,6 +578,7 @@ GameObject:
   - component: {fileID: 2027892997022983282}
   - component: {fileID: -6089709986684078069}
   - component: {fileID: 2990286643680722617}
+  - component: {fileID: 4648122394685071885}
   m_Layer: 0
   m_Name: JSWTarget
   m_TagString: Target
@@ -625,6 +626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moving: 0
   pointsToAdd: {fileID: 0}
+  AlwaysFaceMe: 0
 --- !u!114 &2990286643680722617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,6 +640,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHit: 5
+--- !u!114 &4648122394685071885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5565475704626922588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13f62861b063fea4bb91b91c2db614e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 3741412943837725418, guid: 75c02f6b23b075b4b826235e4e436cae, type: 3}
 --- !u!1 &5849243146747283208
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,6 +1008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moving: 0
   pointsToAdd: {fileID: 0}
+  AlwaysFaceMe: 0
 --- !u!1 &8020896461591060593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,16 +1102,3 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &4648122394685071885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5565475704626922588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13f62861b063fea4bb91b91c2db614e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  image: {fileID: 0}
