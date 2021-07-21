@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
+    //Main menu panels
     public GameObject MainMenu_Panel;
     public GameObject BowBrowser_Panel;
     public GameObject Settings_Panel;
