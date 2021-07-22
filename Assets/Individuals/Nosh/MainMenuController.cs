@@ -10,6 +10,7 @@ public class MainMenuController : MonoBehaviour
     public GameObject BowBrowser_Panel;
     public GameObject Settings_Panel;
     public GameObject QuitConfirmation_Panel;
+    public static int Points;
 
 
     public void LoadGame()
