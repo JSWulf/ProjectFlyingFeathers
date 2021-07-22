@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
+using System;
 
 public class Arrow : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class Arrow : MonoBehaviour
     private float FireStr = 0;
     private bool StartTimer = false;
     private float Timer = 0f;
-    private float AirTime = 0f;
+    public float AirTime { get; private set; } = 0f;
 
     private bool Grav = false;
 
@@ -123,6 +124,13 @@ public class Arrow : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        if (other.collider.tag == "Target")
+        {
+            var t = Convert.ToInt32(AirTime * 100);
+            TargetBehavior.pts = Convert.ToInt32(t);
+            //TargetBehavior.pointsToAdd.AddPoints(t);
+        }
+
         if (other.collider.tag != "Arrow" &&
             other.collider.tag != "Rock")
         {
@@ -139,6 +147,7 @@ public class Arrow : MonoBehaviour
         {
             StartTimer = true;
         }
+        
     }
     
 }
