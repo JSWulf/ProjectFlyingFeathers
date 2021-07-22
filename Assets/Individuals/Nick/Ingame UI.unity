@@ -555,5 +555,9 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5483561111066371710, guid: 0e285b18a3f7a9f4c80e2506e499abca, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e285b18a3f7a9f4c80e2506e499abca, type: 3}
