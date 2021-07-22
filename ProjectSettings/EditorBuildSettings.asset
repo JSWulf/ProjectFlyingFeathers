@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Individuals/Eric/SphereLevel.unity
     guid: f63e0b005fc25c346a35f004bde95479
+  - enabled: 1
+    path: Assets/Individuals/Nick/Level_Select.unity
+    guid: fd39925a90c38fc48bd5775064d1faa7
   m_configObjects: {}

@@ -12,10 +12,15 @@ public class Bow : MonoBehaviour
     private bool BowFired { get; set; } = false;
     private int Redraw = 0;
 
+    //public AudioClip FireSound;
+    private AudioSource audio;
+
     // Start is called before the first frame update
     void Start()
     {
         LP = gameObject.transform.GetChild(1).gameObject;
+
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -72,7 +77,9 @@ public class Bow : MonoBehaviour
 
             NockedArrow.GetComponent<Arrow>().Fire(str);
             NockedArrow = null;
-            BowFired = true; 
+            BowFired = true;
+
+            audio.Play();
         }
 
         //print(LP.transform.position.x + " " +

@@ -5,11 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
+    //Main menu panels
     public GameObject MainMenu_Panel;
     public GameObject BowBrowser_Panel;
     public GameObject Settings_Panel;
     public GameObject QuitConfirmation_Panel;
+    public static int Points;
 
+
+    void Start()
+    {
+        //Set points display
+        if (Points != null)
+        {
+
+        }
+
+    }
 
     public void LoadGame()
     {
@@ -20,13 +32,13 @@ public class MainMenuController : MonoBehaviour
     public void NewGame()
     {
         //New game scene
-        SceneManager.LoadScene("NewGameScene");
+        SceneManager.LoadScene("Level_Select");
     }
 
     public void ToggleBowBrowser()
     {
         //Enable or disable Bow Browser Scene
-        //Enable or disable settings menu
+       
         if (BowBrowser_Panel.activeInHierarchy)
         {
             MainMenu_Panel.SetActive(true);
@@ -56,7 +68,7 @@ public class MainMenuController : MonoBehaviour
 
     public void ToggleQuitConfirmation()
     {
-        //Enable or disable settings menu
+        //Enable or disable quit confirmation menu
         if (QuitConfirmation_Panel.activeInHierarchy)
         {
             QuitConfirmation_Panel.SetActive(false);
