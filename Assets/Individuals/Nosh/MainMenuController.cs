@@ -13,6 +13,16 @@ public class MainMenuController : MonoBehaviour
     public static int Points;
 
 
+    void Start()
+    {
+        //Set points display
+        if (Points != null)
+        {
+
+        }
+
+    }
+
     public void LoadGame()
     {
         //Load game scene
