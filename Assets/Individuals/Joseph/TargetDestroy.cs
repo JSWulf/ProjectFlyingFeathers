@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 
 public class TargetDestroy : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class TargetDestroy : MonoBehaviour
             Hits++;
             if (Hits >= MaxHit)
             {
+                
                 Destroy(gameObject);
 
                 foreach (var ar in Arrows)
@@ -46,4 +48,6 @@ public class TargetDestroy : MonoBehaviour
             }
         }
     }
+
+
 }

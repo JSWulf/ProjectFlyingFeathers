@@ -21,6 +21,8 @@ public class Arrow : MonoBehaviour
 
     private TrailRenderer Trail;
 
+    private AudioSource audio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,8 @@ public class Arrow : MonoBehaviour
         Trail = GetComponentInChildren<TrailRenderer>();
         //Trail.enabled = false;
         //Trail.emitting = false;
+
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -124,10 +128,13 @@ public class Arrow : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        
         if (other.collider.tag == "Target")
         {
+            
             var t = Convert.ToInt32(AirTime * 100);
             TargetBehavior.pts = Convert.ToInt32(t);
+            audio.Play();
             //TargetBehavior.pointsToAdd.AddPoints(t);
         }
 
