@@ -408,6 +408,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8440362735019050492, guid: 63b9f4f4bbd1a6d448ac01e529d63a47, type: 3}
+      propertyPath: m_text
+      value: Rocky Trail
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63b9f4f4bbd1a6d448ac01e529d63a47, type: 3}
 --- !u!224 &537169087 stripped
@@ -980,6 +984,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9053482440100162177, guid: d45c83de12bf57142957b10bf3656d5d, type: 3}
+      propertyPath: m_text
+      value: Night Seeker
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d45c83de12bf57142957b10bf3656d5d, type: 3}
 --- !u!224 &1854026587 stripped
@@ -994,6 +1002,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1224262246}
     m_Modifications:
+    - target: {fileID: 2932119354688371047, guid: 93b612eec4b223449b12eaa3a1ee1688, type: 3}
+      propertyPath: m_text
+      value: Day at the Lake
+      objectReference: {fileID: 0}
     - target: {fileID: 2932119356016303872, guid: 93b612eec4b223449b12eaa3a1ee1688, type: 3}
       propertyPath: m_Name
       value: Nosh_Level_Button
@@ -1253,6 +1265,10 @@ PrefabInstance:
     - target: {fileID: 1579065051003808525, guid: f05c20cc6fc02d3478e8dc3e0d14383a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3830254402919628010, guid: f05c20cc6fc02d3478e8dc3e0d14383a, type: 3}
+      propertyPath: m_text
+      value: Practice
       objectReference: {fileID: 0}
     - target: {fileID: 9156562252665202913, guid: f05c20cc6fc02d3478e8dc3e0d14383a, type: 3}
       propertyPath: m_Name
