@@ -21,7 +21,7 @@ public class MainMenuController : MonoBehaviour
     public void NewGame()
     {
         //New game scene
-        SceneManager.LoadScene("NewGameScene");
+        SceneManager.LoadScene("Level_Select");
     }
 
     public void ToggleBowBrowser()
