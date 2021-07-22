@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
+    //Main menu panels
     public GameObject MainMenu_Panel;
     public GameObject BowBrowser_Panel;
     public GameObject Settings_Panel;
@@ -26,7 +27,7 @@ public class MainMenuController : MonoBehaviour
     public void ToggleBowBrowser()
     {
         //Enable or disable Bow Browser Scene
-        //Enable or disable settings menu
+       
         if (BowBrowser_Panel.activeInHierarchy)
         {
             MainMenu_Panel.SetActive(true);
@@ -56,7 +57,7 @@ public class MainMenuController : MonoBehaviour
 
     public void ToggleQuitConfirmation()
     {
-        //Enable or disable settings menu
+        //Enable or disable quit confirmation menu
         if (QuitConfirmation_Panel.activeInHierarchy)
         {
             QuitConfirmation_Panel.SetActive(false);
