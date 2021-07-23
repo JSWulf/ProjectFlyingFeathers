@@ -1255,6 +1255,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1224262246}
     m_Modifications:
+    - target: {fileID: 317656208552004872, guid: f975f7a7485c2764d981011ebc622df6, type: 3}
+      propertyPath: m_text
+      value: Todd's Practice
+      objectReference: {fileID: 0}
     - target: {fileID: 2640993921756699375, guid: f975f7a7485c2764d981011ebc622df6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
