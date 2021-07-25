@@ -26,10 +26,28 @@ public static class SaveGame
 
         var l = File.ReadAllLines(f)[0];
 
-        //var r = 
+        var r = DESEncryption.TryDecrypt(l, "pwd");
 
+        int p = 0;
 
-        return 0;
+        try
+        {
+            p = Convert.ToInt32(r);
+        }
+        catch (Exception)
+        {
+            //do nothing
+        }
+        
+
+        return p;
+    }
+
+    public static void Save(int pts)
+    {
+        var s = DESEncryption.Encrypt(pts.ToString(), "pwd");
+
+        File.WriteAllText(MainMenuController.SaveFile, s);
     }
 }
 
