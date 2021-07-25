@@ -21,7 +21,10 @@ public class MainMenuController : MonoBehaviour
     void Start()
     {
         //Point_Text.SetText(PointsText.GPoints.ToString());
-
+        if (PointsText.GPoints == 0)
+        {
+            PointsText.GPoints = SaveGame.LoadPoints;
+        }
     }
 
     public void LoadGame()
