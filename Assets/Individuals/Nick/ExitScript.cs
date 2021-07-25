@@ -26,6 +26,6 @@ public class ExitScript : MonoBehaviour
 
     public void UpdatePoints()
     {
-        PointsText.GPoints = PointsText.GPoints + int.Parse(LvlPointsText.text);
+        //PointsText.GPoints = PointsText.GPoints + int.Parse(LvlPointsText.text);
     }
 }

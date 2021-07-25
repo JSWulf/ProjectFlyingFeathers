@@ -35,7 +35,11 @@ public class MainMenuController : MonoBehaviour
     {
         //Load game scene
         SceneManager.LoadScene("Level_Select");
-        PointsText.GPoints = SaveGame.LoadPoints;
+        if (PointsText.GPoints == 0)
+        {
+            PointsText.GPoints = SaveGame.LoadPoints;
+        }
+        
     }
 
     public void NewGame()
@@ -43,6 +47,7 @@ public class MainMenuController : MonoBehaviour
         //New game scene
         SceneManager.LoadScene("Level_Select");
         PointsText.GPoints = 0;
+        //Debug.Log("new game - " + PointsText.GPoints);
     }
 
     public void ToggleBowBrowser()

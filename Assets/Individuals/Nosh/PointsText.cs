@@ -14,6 +14,7 @@ public class PointsText : MonoBehaviour
         {
             gPoints = value;
             SaveGame.Save(gPoints);
+            //Debug.Log(gPoints);
         }
     }
 

@@ -48,6 +48,7 @@ public class TargetBehavior : MonoBehaviour
         Thread.Sleep(10);
         //points += 100;
         points += pts;
+        PointsText.GPoints += pts;
         pts = 0;
         
 
