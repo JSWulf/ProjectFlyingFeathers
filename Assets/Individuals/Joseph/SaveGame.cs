@@ -24,6 +24,10 @@ public static class SaveGame
     {
         var f = MainMenuController.SaveFile;
 
+        if (File.Exists(f))
+        {
+            return 0;
+        }
         var l = File.ReadAllLines(f)[0];
 
         var r = DESEncryption.TryDecrypt(l, "pwd");
