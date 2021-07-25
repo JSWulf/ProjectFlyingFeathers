@@ -12,11 +12,12 @@ public class MainMenuController : MonoBehaviour
     public GameObject QuitConfirmation_Panel;
     public static int Points;
 
+    public static string SaveFile { get; private set; } = "SaveGame.fd";
 
     void Start()
     {
         //Set points display
-        if (Points != null)
+        if (Points != null && Points >= 0)
         {
 
         }
@@ -27,12 +28,14 @@ public class MainMenuController : MonoBehaviour
     {
         //Load game scene
         SceneManager.LoadScene("LoadGameScene");
+        //Points = 
     }
 
     public void NewGame()
     {
         //New game scene
         SceneManager.LoadScene("Level_Select");
+        Points = 0;
     }
 
     public void ToggleBowBrowser()
