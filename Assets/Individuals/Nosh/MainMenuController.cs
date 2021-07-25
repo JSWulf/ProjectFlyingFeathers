@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -11,23 +12,15 @@ public class MainMenuController : MonoBehaviour
     public GameObject Settings_Panel;
     public GameObject QuitConfirmation_Panel;
 
-    //public GameObject Point_Text;
+    public TMP_Text Point_Text;
     //public static int GPoints;
-
-    
-    public static int GPoints;
 
 
     public static string SaveFile { get; private set; } = "SaveGame.fd";
 
     void Start()
     {
-        //Point_Text = GetComponent<Point_Text>
-        ////Set points display
-        //if (GPoints != null && GPoints >= 0)
-        //{
-        //    Points. = GPoints;
-        //}
+        Point_Text.SetText(PointsText.GPoints.ToString());
 
     }
 
