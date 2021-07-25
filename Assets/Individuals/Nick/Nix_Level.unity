@@ -881,7 +881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2027892997022983282, guid: f3df178bcef1f854fa6260cee8ea9cba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -282.62952
+      value: -281.42
       objectReference: {fileID: 0}
     - target: {fileID: 2027892997022983282, guid: f3df178bcef1f854fa6260cee8ea9cba, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1065,6 +1065,46 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4129101983394957336, guid: 0e285b18a3f7a9f4c80e2506e499abca, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129101983394957336, guid: 0e285b18a3f7a9f4c80e2506e499abca, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 0.9921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129101983394957336, guid: 0e285b18a3f7a9f4c80e2506e499abca, type: 3}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 0.21960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129101983394957336, guid: 0e285b18a3f7a9f4c80e2506e499abca, type: 3}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 0.21960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129101983394957336, guid: 0e285b18a3f7a9f4c80e2506e499abca, type: 3}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 0.8705883
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129101983394957336, guid: 0e285b18a3f7a9f4c80e2506e499abca, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129101983394957336, guid: 0e285b18a3f7a9f4c80e2506e499abca, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129101983394957336, guid: 0e285b18a3f7a9f4c80e2506e499abca, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129101983394957339, guid: 0e285b18a3f7a9f4c80e2506e499abca, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129101983394957339, guid: 0e285b18a3f7a9f4c80e2506e499abca, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4129101983408122186, guid: 0e285b18a3f7a9f4c80e2506e499abca, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1156,6 +1196,10 @@ PrefabInstance:
     - target: {fileID: 4129101983941327715, guid: 0e285b18a3f7a9f4c80e2506e499abca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129101983941327726, guid: 0e285b18a3f7a9f4c80e2506e499abca, type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4129101983941327727, guid: 0e285b18a3f7a9f4c80e2506e499abca, type: 3}
       propertyPath: m_Name

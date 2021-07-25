@@ -29,4 +29,9 @@ public class Points : MonoBehaviour
 	{
 		this.points += points;
 	}
+
+    public int GetPoints()
+    {
+        return points;
+    }
 }
