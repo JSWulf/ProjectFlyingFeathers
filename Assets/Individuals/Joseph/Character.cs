@@ -10,13 +10,13 @@ public class Character : MonoBehaviour
     private Camera Cam { get; set; }
     private Rigidbody RB { get; set; }
 
-    public float currentStamina = 100;
-    public float currentStrength = 0;
+    private float currentStamina = 100;
+    private float currentStrength = 0;
 
     public bool reverse = false;
 
-    public float staminaRegenRate = 0.012f;
-    public float pullStrength = 50f;
+    private float staminaRegenRate = 0.012f;
+    private float pullStrength = 0.3f;
 
     public int reverseCount = 0;
 
