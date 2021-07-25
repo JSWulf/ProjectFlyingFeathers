@@ -10,16 +10,17 @@ public class MainMenuController : MonoBehaviour
     public GameObject BowBrowser_Panel;
     public GameObject Settings_Panel;
     public GameObject QuitConfirmation_Panel;
-    public static int Points;
+    public GameObject Point_Text;
+    public static int GPoints;
 
     public static string SaveFile { get; private set; } = "SaveGame.fd";
 
     void Start()
     {
         //Set points display
-        if (Points != null && Points >= 0)
+        if (GPoints != null && GPoints >= 0)
         {
-
+            Point_Text.text = GPoints;
         }
 
     }
@@ -35,7 +36,7 @@ public class MainMenuController : MonoBehaviour
     {
         //New game scene
         SceneManager.LoadScene("Level_Select");
-        Points = 0;
+        GPoints = 0;
     }
 
     public void ToggleBowBrowser()
