@@ -10,7 +10,7 @@ public class MainMenuController : MonoBehaviour
     public GameObject BowBrowser_Panel;
     public GameObject Settings_Panel;
     public GameObject QuitConfirmation_Panel;
-    public GameObject Point_Text;
+    
     public static int GPoints;
 
     public static string SaveFile { get; private set; } = "SaveGame.fd";
