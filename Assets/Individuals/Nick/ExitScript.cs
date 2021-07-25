@@ -6,9 +6,8 @@ using UnityEngine.UI;
 public class ExitScript : MonoBehaviour
 {
     public GameObject ReturnPanel;
-    public Text LvlPointsText;
 
-    public void OpenPanel()
+    public void OpenReturnPanel()
     {
         if(ReturnPanel != null)
         {
@@ -16,16 +15,11 @@ public class ExitScript : MonoBehaviour
         }
     }
 
-    public void ClosePanel()
+    public void CloseReturnPanel()
     {
         if(ReturnPanel != null)
         {
             ReturnPanel.SetActive(false);
         }
-    }
-
-    public void UpdatePoints()
-    {
-        //PointsText.GPoints = PointsText.GPoints + int.Parse(LvlPointsText.text);
     }
 }
