@@ -10,13 +10,13 @@ public class Character : MonoBehaviour
     private Camera Cam { get; set; }
     private Rigidbody RB { get; set; }
 
-    public float currentStamina = 100;
-    public float currentStrength = 0;
+    private float currentStamina = 100;
+    private float currentStrength = 0;
 
     public bool reverse = false;
 
-    public float staminaRegenRate = 0.012f;
-    public float pullStrength = 50f;
+    private float staminaRegenRate = 0.012f;
+    private float pullStrength = 0.3f;
 
     public int reverseCount = 0;
 
@@ -45,11 +45,15 @@ public class Character : MonoBehaviour
     public int Strength = 100;
     public int Stamina = 100;
 
+    //private bool MenuOpen = false;
+    //private SceneLoader Menu;
+
     public List<string> Gear { get; set; } // future placeholder. Change type to "GearItem" once created.
 
     // Start is called before the first frame update
     void Start()
     {
+        //Menu = new SceneLoader();
         Cam = Camera.main;
         RB = GetComponent<Rigidbody>();
         //strengthBar = GetComponent<StrengthBar>();
@@ -67,6 +71,23 @@ public class Character : MonoBehaviour
         //float Forward = Input.GetAxis("MoveForward");
         //float Right = Input.GetAxis("MoveRight");
 
+        //if (MenuOpen)
+        //{
+        //    if (Input.GetKey(KeyCode.Escape))
+        //    {
+        //        //Menu.ClosePanel();
+        //        MenuOpen = false;
+        //    }
+
+        //    return;
+        //}
+
+        //if (Input.GetKey(KeyCode.Escape))
+        //{
+        //    Menu.LoadLevel();
+        //    MenuOpen = true;
+        //    return;
+        //}
 
         //turn if right-click, A, or D is held
         if (Input.GetKey(TurnLeft))

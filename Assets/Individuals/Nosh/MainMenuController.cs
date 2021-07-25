@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -11,31 +12,30 @@ public class MainMenuController : MonoBehaviour
     public GameObject Settings_Panel;
     public GameObject QuitConfirmation_Panel;
 
-    //public GameObject Point_Text;
+    //public TMP_Text Point_Text;
     //public static int GPoints;
-
-    
-    public static int GPoints;
 
 
     public static string SaveFile { get; private set; } = "SaveGame.fd";
 
     void Start()
     {
-        //Point_Text = GetComponent<Point_Text>
-        ////Set points display
-        //if (GPoints != null && GPoints >= 0)
-        //{
-        //    Points. = GPoints;
-        //}
-
+        //Point_Text.SetText(PointsText.GPoints.ToString());
+        if (PointsText.GPoints == 0)
+        {
+            PointsText.GPoints = SaveGame.LoadPoints;
+        }
     }
 
     public void LoadGame()
     {
         //Load game scene
         SceneManager.LoadScene("Level_Select");
-        PointsText.GPoints = SaveGame.LoadPoints;
+        if (PointsText.GPoints == 0)
+        {
+            PointsText.GPoints = SaveGame.LoadPoints;
+        }
+        
     }
 
     public void NewGame()
@@ -43,6 +43,7 @@ public class MainMenuController : MonoBehaviour
         //New game scene
         SceneManager.LoadScene("Level_Select");
         PointsText.GPoints = 0;
+        //Debug.Log("new game - " + PointsText.GPoints);
     }
 
     public void ToggleBowBrowser()

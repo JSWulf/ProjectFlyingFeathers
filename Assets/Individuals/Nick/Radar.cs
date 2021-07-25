@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 //Used from tutorial at https://www.youtube.com/watch?v=LP2XHHeQuvg&t=156s by Holistic3d
 
@@ -11,12 +12,17 @@ public class RadarObject
     public GameObject owner { get; set; }
 }
 
-
 public class Radar : MonoBehaviour   
 {
+    private int rTargets;
+    private int tTargets;
+    public TextMeshProUGUI RemainingTargetsText;
+
     public Transform playerPos;
     float mapScale = 2.0f;
     private bool parentSet;
+
+    public GameObject LevelEndPanel;
 
     public static List<RadarObject> radarObjects = new List<RadarObject>();
 
@@ -55,8 +61,7 @@ public class Radar : MonoBehaviour
             radarPos.z = distToObject * Mathf.Sin(deltaY * Mathf.Deg2Rad);
 
             if (!parentSet)
-            {
-                
+            {   
                 ro.icon.transform.SetParent(this.transform);
             }
             
@@ -64,7 +69,11 @@ public class Radar : MonoBehaviour
         }
 
         //after the first run, no longer set parent for each radar transform
-        parentSet = true;
+        if (!parentSet)
+        {
+            tTargets = radarObjects.Count;
+            parentSet = true;
+        }
     }
 
     // Start is called before the first frame update
@@ -76,6 +85,16 @@ public class Radar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        rTargets = radarObjects.Count;
+        RemainingTargetsText.SetText(rTargets + "/" + tTargets + " Targets");
         DrawRadarIcons();
+
+        if (rTargets == 0)
+        {
+            if (LevelEndPanel != null)
+            {
+                LevelEndPanel.SetActive(true);
+            }
+        }
     }
 }

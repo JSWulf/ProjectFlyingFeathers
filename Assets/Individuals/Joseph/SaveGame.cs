@@ -24,7 +24,7 @@ public static class SaveGame
     {
         var f = MainMenuController.SaveFile;
 
-        if (File.Exists(f))
+        if (!File.Exists(f))
         {
             return 0;
         }
