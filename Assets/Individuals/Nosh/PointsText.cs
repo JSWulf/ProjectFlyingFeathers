@@ -7,7 +7,7 @@ public class PointsText : MonoBehaviour
 {
     private TextMeshProUGUI PtsText;
 
-    private static int gPoints;
+    private static int gPoints = SaveGame.LoadPoints;
     public static int GPoints {
         get { return gPoints; }
         set
