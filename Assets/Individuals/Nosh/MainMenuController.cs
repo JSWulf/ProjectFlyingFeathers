@@ -34,7 +34,7 @@ public class MainMenuController : MonoBehaviour
     public void LoadGame()
     {
         //Load game scene
-        SceneManager.LoadScene("LoadGameScene");
+        SceneManager.LoadScene("Level_Select");
         PointsText.GPoints = SaveGame.LoadPoints;
     }
 
