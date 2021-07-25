@@ -60,7 +60,7 @@ public class Radar : MonoBehaviour
                 ro.icon.transform.SetParent(this.transform);
             }
             
-            ro.icon.transform.position = new Vector3(radarPos.x, radarPos.z, 0) + this.transform.position;
+            ro.icon.transform.position = new Vector3(radarPos.x/2, radarPos.z/2, 0) + this.transform.position;
         }
 
         //after the first run, no longer set parent for each radar transform
