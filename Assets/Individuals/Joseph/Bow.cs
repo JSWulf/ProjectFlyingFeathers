@@ -29,7 +29,7 @@ public class Bow : MonoBehaviour
 
         if (BowFired)
         {
-            if (Redraw >= 50)
+            if (Redraw >= 200)
             {
                 BowFired = false;
                 Redraw = 0;
