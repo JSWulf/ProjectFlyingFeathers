@@ -12,7 +12,7 @@ public class MainMenuController : MonoBehaviour
     public GameObject Settings_Panel;
     public GameObject QuitConfirmation_Panel;
 
-    public TMP_Text Point_Text;
+    //public TMP_Text Point_Text;
     //public static int GPoints;
 
 
@@ -20,7 +20,7 @@ public class MainMenuController : MonoBehaviour
 
     void Start()
     {
-        Point_Text.SetText(PointsText.GPoints.ToString());
+        //Point_Text.SetText(PointsText.GPoints.ToString());
 
     }
 
